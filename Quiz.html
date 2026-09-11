@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BharatVerse | Heritage Quiz Arena</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --midnight:#0B1320;
+    --ink:#121826;
+    --deep:#080D16;
+    --ivory:#F4EFE6;
+    --white:#FAF8F3;
+    --light:#EEEAE2;
+    --sand:#D9CCB8;
+    --gold:#C8A96B;
+    --gold-soft:#E2D2AD;
+    --teal:#2E6F73;
+    --teal-dark:#214F53;
+    --burgundy:#6E3B3B;
+    --blue:#526A7A;
+    --muted:#9AA4AF;
+    --text:#E9E5DC;
+    --border:rgba(226,210,173,.18);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
+    background:var(--deep);
+    line-height:1.6;
+}
+
+.flag{
+    height:6px;
+    background:linear-gradient(
+        90deg,
+        #D77A3F 0 33.33%,
+        #F4EFE6 33.33% 66.66%,
+        #4D8064 66.66%
+    );
+}
+
+/* NAVIGATION */
+nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(11,19,32,.94);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+    color:var(--ivory);
+}
+
+.logo-icon{
+    display:inline-flex;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,var(--gold),var(--teal));
+    color:#fff;
+    margin-right:9px;
+    box-shadow:0 5px 20px rgba(200,169,107,.18);
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#BFC5CA;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--gold-soft);
+}
+
+.nav-button,
+.primary-button{
+    display:inline-block;
+    text-decoration:none;
+    border-radius:30px;
+    padding:12px 21px;
+    background:linear-gradient(135deg,var(--gold),var(--teal));
+    color:#fff;
+    font-weight:700;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 8px 24px rgba(0,0,0,.22);
+    transition:.25s;
+}
+
+.nav-button:hover,
+.primary-button:hover{
+    transform:translateY(-2px);
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:105px 8% 90px;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(200,169,107,.12),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(46,111,115,.15),transparent 32%),
+        linear-gradient(135deg,var(--deep),var(--midnight) 55%,#101C2C);
+    text-align:center;
+    border-bottom:1px solid var(--border);
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border:1px solid rgba(200,169,107,.10);
+    border-radius:50%;
+    left:-180px;
+    top:-180px;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border:1px solid rgba(46,111,115,.13);
+    border-radius:50%;
+    right:-130px;
+    bottom:-150px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:20px;
+    background:rgba(200,169,107,.10);
+    border:1px solid rgba(200,169,107,.25);
+    color:var(--gold-soft);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.hero h1{
+    position:relative;
+    z-index:1;
+    font-size:64px;
+    line-height:1.02;
+    margin:20px auto 18px;
+    max-width:900px;
+    letter-spacing:-3px;
+    color:var(--ivory);
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,var(--gold-soft),#fff,var(--gold));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    position:relative;
+    z-index:1;
+    max-width:720px;
+    margin:auto;
+    color:#AAB2BA;
+    font-size:17px;
+}
+
+.hero-actions{
+    position:relative;
+    z-index:1;
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.secondary-button{
+    padding:12px 21px;
+    border:1px solid rgba(226,210,173,.25);
+    border-radius:30px;
+    text-decoration:none;
+    color:var(--ivory);
+    background:rgba(255,255,255,.04);
+    font-weight:700;
+    transition:.25s;
+}
+
+.secondary-button:hover{
+    background:rgba(255,255,255,.08);
+}
+
+/* GENERAL SECTIONS */
+section{
+    padding:85px 8%;
+    background:var(--midnight);
+}
+
+.section-title{
+    text-align:center;
+    max-width:750px;
+    margin:0 auto 45px;
+}
+
+.small{
+    font-size:12px;
+    letter-spacing:2px;
+    color:var(--gold);
+    font-weight:800;
+    margin-bottom:9px;
+}
+
+.section-title h2{
+    font-size:42px;
+    line-height:1.1;
+    margin-bottom:14px;
+    color:var(--ivory);
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+/* QUICK OVERVIEW - LIGHT CONTRAST */
+section.reveal:first-of-type{
+    background:var(--ivory);
+    color:#20252a;
+}
+
+section.reveal:first-of-type .section-title h2{
+    color:#171C21;
+}
+
+section.reveal:first-of-type .section-title p{
+    color:#697077;
+}
+
+/* STATS */
+.quiz-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.stat{
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+section.reveal:first-of-type .stat{
+    background:#fff;
+    border:1px solid #E3DED4;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.stat strong{
+    display:block;
+    font-size:30px;
+    color:var(--gold);
+}
+
+section.reveal:first-of-type .stat strong{
+    color:var(--teal);
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:13px;
+}
+
+section.reveal:first-of-type .stat span{
+    color:#777;
+}
+
+/* QUIZ ARENA */
+.arena{
+    background:
+        radial-gradient(circle at 15% 20%,rgba(200,169,107,.07),transparent 28%),
+        radial-gradient(circle at 85% 75%,rgba(46,111,115,.10),transparent 30%),
+        var(--deep);
+}
+
+.arena-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:30px;
+    align-items:start;
+}
+
+.quiz-card,
+.side-card{
+    background:rgba(255,255,255,.035);
+    border-radius:24px;
+    padding:32px;
+    box-shadow:0 20px 50px rgba(0,0,0,.28);
+    border:1px solid var(--border);
+}
+
+.quiz-card h3{
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.quiz-card .question-count{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.question{
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:22px;
+    color:var(--ivory);
+}
+
+.options{
+    display:grid;
+    gap:12px;
+}
+
+.option{
+    width:100%;
+    text-align:left;
+    padding:16px 18px;
+    border:1px solid rgba(226,210,173,.18);
+    background:rgba(255,255,255,.025);
+    color:#D9DEE2;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:var(--gold);
+    background:rgba(200,169,107,.07);
+    transform:translateX(3px);
+}
+
+.option.selected{
+    border-color:var(--teal);
+    background:rgba(46,111,115,.15);
+    color:#F5F1E8;
+}
+
+.quiz-controls{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:25px;
+}
+
+.control{
+    padding:12px 20px;
+    border:1px solid rgba(226,210,173,.16);
+    border-radius:25px;
+    background:#1B2431;
+    color:#fff;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.control.next{
+    background:linear-gradient(135deg,var(--gold),var(--teal));
+    border:none;
+}
+
+.control:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+.progress-wrap{
+    height:7px;
+    background:rgba(255,255,255,.08);
+    border-radius:10px;
+    overflow:hidden;
+    margin:10px 0 25px;
+}
+
+.progress{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,var(--gold),var(--teal));
+    transition:.3s;
+}
+
+.side-card{
+    position:sticky;
+    top:95px;
+}
+
+.side-card h3{
+    font-size:22px;
+    margin-bottom:15px;
+    color:var(--ivory);
+}
+
+.side-list{
+    list-style:none;
+}
+
+.side-list li{
+    padding:12px 0;
+    border-bottom:1px solid rgba(226,210,173,.12);
+    color:var(--muted);
+    font-size:14px;
+}
+
+.side-list li:last-child{
+    border-bottom:0;
+}
+
+.side-list b{
+    color:var(--gold-soft);
+}
+
+.notice{
+    padding:18px 20px;
+    border-radius:15px;
+    background:rgba(200,169,107,.07);
+    border:1px solid rgba(200,169,107,.16);
+    color:#AEB6BD;
+    font-size:13px;
+    margin-top:20px;
+}
+
+/* CATEGORIES - LIGHT */
+#categories{
+    background:var(--ivory);
+    color:#20252a;
+}
+
+#categories .section-title h2{
+    color:#171C21;
+}
+
+#categories .section-title p{
+    color:#6D7479;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.category{
+    padding:28px 18px;
+    border-radius:20px;
+    background:#fff;
+    border:1px solid #E3DED4;
+    text-align:center;
+    box-shadow:0 7px 24px rgba(0,0,0,.05);
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-6px);
+    box-shadow:0 14px 30px rgba(0,0,0,.09);
+    border-color:#C8A96B;
+}
+
+.category .icon{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.category h3{
+    font-size:17px;
+    color:#20252A;
+}
+
+.category p{
+    font-size:12px;
+    color:#777;
+    margin-top:5px;
+}
+
+/* HOW IT WORKS */
+.how{
+    background:var(--ink);
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.step{
+    position:relative;
+    background:rgba(255,255,255,.035);
+    padding:28px;
+    border-radius:20px;
+    border:1px solid var(--border);
+}
+
+.number{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,var(--gold),var(--teal));
+    color:#fff;
+    font-weight:800;
+    margin-bottom:16px;
+}
+
+.step h3{
+    margin-bottom:8px;
+    color:var(--ivory);
+}
+
+.step p{
+    font-size:14px;
+    color:var(--muted);
+}
+
+/* FEATURES */
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.feature{
+    padding:32px;
+    border-radius:22px;
+    background:
+        linear-gradient(145deg,rgba(200,169,107,.07),rgba(46,111,115,.06)),
+        rgba(255,255,255,.025);
+    border:1px solid var(--border);
+}
+
+.feature-icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.feature h3{
+    margin-bottom:8px;
+    color:var(--ivory);
+}
+
+.feature p{
+    font-size:14px;
+    color:var(--muted);
+}
+
+.quote{
+    max-width:800px;
+    margin:35px auto 0;
+    text-align:center;
+    font-size:20px;
+    font-weight:700;
+    color:var(--gold-soft);
+}
+
+/* TIPS - LIGHT */
+.tips{
+    background:var(--ivory);
+    color:#20252a;
+}
+
+.tips .section-title h2{
+    color:#171C21;
+}
+
+.tips .section-title p{
+    color:#6D7479;
+}
+
+.tip-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.tip{
+    background:#fff;
+    padding:28px;
+    border-radius:20px;
+    border-left:5px solid var(--gold);
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.tip h3{
+    margin-bottom:7px;
+    color:#20252A;
+}
+
+.tip p{
+    font-size:14px;
+    color:#666;
+}
+
+/* SCORE */
+.score-section{
+    display:none;
+    padding-top:30px;
+    background:var(--deep);
+}
+
+.score-box{
+    text-align:center;
+    max-width:750px;
+    margin:auto;
+    padding:45px;
+    border-radius:28px;
+    background:
+        radial-gradient(circle at top,rgba(200,169,107,.10),transparent 50%),
+        var(--ink);
+    border:1px solid var(--border);
+}
+
+.score-box h2{
+    color:var(--ivory);
+}
+
+.score-box .big{
+    font-size:64px;
+    font-weight:900;
+    background:linear-gradient(90deg,var(--gold-soft),#fff,var(--teal));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.score-box p{
+    color:var(--muted);
+}
+
+.restart{
+    margin-top:22px;
+}
+
+/* MILESTONES */
+.milestones{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.milestone{
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+}
+
+.milestone strong{
+    font-size:24px;
+    color:var(--gold);
+}
+
+.milestone h3{
+    color:var(--ivory);
+}
+
+.milestone p{
+    font-size:13px;
+    color:var(--muted);
+}
+
+/* INFORMATION */
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.info-card{
+    padding:30px;
+    border-radius:22px;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.info-card h3{
+    margin-bottom:10px;
+    color:var(--ivory);
+}
+
+.info-card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    background:
+        radial-gradient(circle at center,rgba(200,169,107,.10),transparent 40%),
+        var(--deep);
+    color:#fff;
+    border-top:1px solid var(--border);
+}
+
+.cta-box{
+    max-width:850px;
+    margin:auto;
+}
+
+.cta h2{
+    font-size:44px;
+    line-height:1.1;
+    margin-bottom:15px;
+    color:var(--ivory);
+}
+
+.cta p{
+    color:#AEB5BB;
+    margin-bottom:25px;
+}
+
+/* FOOTER */
+.footer{
+    background:#060A10;
+    color:#fff;
+    padding:45px 8%;
+    border-top:1px solid rgba(226,210,173,.12);
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.footer h2{
+    color:var(--ivory);
+}
+
+.footer p{
+    color:#8F989F;
+    font-size:13px;
+    max-width:430px;
+}
+
+.footer-links{
+    display:flex;
+    gap:50px;
+}
+
+.footer-links h4{
+    margin-bottom:10px;
+    color:var(--gold-soft);
+}
+
+.footer-links a{
+    display:block;
+    color:#8F989F;
+    text-decoration:none;
+    font-size:13px;
+    margin:6px 0;
+}
+
+.footer-links a:hover{
+    color:var(--gold-soft);
+}
+
+.copyright{
+    text-align:center;
+    color:#626A72;
+    margin-top:35px;
+    padding-top:20px;
+    border-top:1px solid #202631;
+    font-size:12px;
+}
+
+/* FEEDBACK */
+.feedback{
+    margin-top:18px;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,255,255,.05);
+    color:#B8C0C6;
+    display:none;
+}
+
+.feedback.correct{
+    background:rgba(46,111,115,.15);
+    color:#A7D8D0;
+}
+
+.feedback.wrong{
+    background:rgba(110,59,59,.18);
+    color:#E4A9A9;
+}
+
+/* OTHER */
+.filter-row{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.filter{
+    padding:9px 15px;
+    border-radius:20px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+    color:var(--text);
+    cursor:pointer;
+}
+
+.filter.active{
+    background:var(--gold);
+    color:#111;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:.7s;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .arena-grid,
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .side-card{
+        position:static;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .features,
+    .tip-grid,
+    .milestones{
+        grid-template-columns:1fr;
+    }
+
+    .quiz-stats{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    nav{
+        padding:0 5%;
+        height:65px;
+    }
+
+    .nav-button{
+        padding:10px 14px;
+        font-size:12px;
+    }
+
+    .hero{
+        padding:70px 5%;
+    }
+
+    .hero h1{
+        font-size:40px;
+        letter-spacing:-2px;
+    }
+
+    section{
+        padding:65px 5%;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .categories,
+    .steps,
+    .quiz-stats{
+        grid-template-columns:1fr;
+    }
+
+    .quiz-card,
+    .side-card{
+        padding:22px;
+    }
+
+    .question{
+        font-size:19px;
+    }
+
+    .quiz-controls{
+        flex-direction:column;
+    }
+
+    .control{
+        width:100%;
+    }
+
+    .footer-top,
+    .footer-links{
+        flex-direction:column;
+    }
+
+    .footer-links{
+        gap:20px;
+    }
+
+    .cta h2{
+        font-size:34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="flag"></div>
+
+<nav>
+    <div class="logo">
+        <span class="logo-icon">ॐ</span>BharatVerse
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#arena">Quiz Arena</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#tips">Tips</a></li>
+    </ul>
+
+    <a href="Hack-a-thon website.html" class="nav-button">
+        Main Website
+    </a>
+</nav>
+
+<header class="hero" id="home">
+
+    <div class="badge">
+        BHARATVERSE • HERITAGE QUIZ ARENA
+    </div>
+
+    <h1>
+        Test your knowledge of
+        <span>India's heritage.</span>
+    </h1>
+
+    <p>
+        Turn what you have learned into a challenge.
+        Explore monuments, dynasties, history and culture
+        while testing your memory.
+    </p>
+
+    <div class="hero-actions">
+        <a href="#arena" class="primary-button">
+            Enter Quiz Arena →
+        </a>
+
+        <a href="#how" class="secondary-button">
+            How It Works
+        </a>
+    </div>
+
+</header>
+
+
+<!-- OVERVIEW — LIGHT CONTRAST SECTION -->
+
+<section class="reveal">
+
+    <div class="section-title">
+
+        <div class="small">A QUICK OVERVIEW</div>
+
+        <h2>
+            Learn. Remember. Challenge Yourself.
+        </h2>
+
+        <p>
+            The quiz experience is designed to make
+            heritage learning active instead of passive.
+        </p>
+
+    </div>
+
+    <div class="quiz-stats">
+
+        <div class="stat">
+            <strong>5</strong>
+            <span>Core Categories</span>
+        </div>
+
+        <div class="stat">
+            <strong>10</strong>
+            <span>Questions Per Round</span>
+        </div>
+
+        <div class="stat">
+            <strong>4</strong>
+            <span>Answer Choices</span>
+        </div>
+
+        <div class="stat">
+            <strong>1</strong>
+            <span>Heritage Journey</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- QUIZ ARENA -->
+
+<section class="arena" id="arena">
+
+    <div class="section-title reveal">
+
+        <div class="small">PLAY THE QUIZ</div>
+
+        <h2>Heritage Quiz Arena</h2>
+
+        <p>
+            Choose an answer, move through the round
+            and see your score at the end.
+        </p>
+
+    </div>
+
+    <div class="arena-grid">
+
+        <div class="quiz-card reveal">
+
+            <div class="question-count" id="questionCount">
+                Question 1 of 10
+            </div>
+
+            <div class="progress-wrap">
+                <div class="progress" id="progress"></div>
+            </div>
+
+            <div class="question" id="question">
+                Loading question...
+            </div>
+
+            <div class="options" id="options"></div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <div class="quiz-controls">
+
+                <button
+                    class="control"
+                    id="prevBtn"
+                    onclick="previousQuestion()">
+                    ← Previous
+                </button>
+
+                <button
+                    class="control next"
+                    id="nextBtn"
+                    onclick="nextQuestion()">
+                    Next →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="side-card reveal">
+
+            <h3>Your Quiz Journey</h3>
+
+            <ul class="side-list">
+
+                <li>
+                    <b>Step 1:</b>
+                    Read the heritage question carefully.
+                </li>
+
+                <li>
+                    <b>Step 2:</b>
+                    Select the answer you think is best.
+                </li>
+
+                <li>
+                    <b>Step 3:</b>
+                    Move to the next challenge.
+                </li>
+
+                <li>
+                    <b>Step 4:</b>
+                    Finish the round and check your score.
+                </li>
+
+                <li>
+                    <b>Goal:</b>
+                    Learn something new with every question.
+                </li>
+
+            </ul>
+
+            <div class="notice">
+                Tip: Do not worry about getting every answer right.
+                The goal is to discover, remember and improve.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES — LIGHT CONTRAST -->
+
+<section id="categories">
+
+    <div class="section-title reveal">
+
+        <div class="small">
+            EXPLORE DIFFERENT TOPICS
+        </div>
+
+        <h2>Five Heritage Categories</h2>
+
+        <p>
+            Every category gives you another way to connect
+            with India's past and culture.
+        </p>
+
+    </div>
+
+    <div class="categories">
+
+        <div class="category reveal">
+            <div class="icon">🏛️</div>
+            <h3>Monuments</h3>
+            <p>Architecture and iconic heritage sites.</p>
+        </div>
+
+        <div class="category reveal">
+            <div class="icon">👑</div>
+            <h3>Dynasties</h3>
+            <p>Rulers, kingdoms and historical eras.</p>
+        </div>
+
+        <div class="category reveal">
+            <div class="icon">📜</div>
+            <h3>History</h3>
+            <p>Events and stories from India's past.</p>
+        </div>
+
+        <div class="category reveal">
+            <div class="icon">🎭</div>
+            <h3>Culture</h3>
+            <p>Traditions, arts and cultural knowledge.</p>
+        </div>
+
+        <div class="category reveal">
+            <div class="icon">🌏</div>
+            <h3>India</h3>
+            <p>A broad mix of heritage topics.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="how" id="how">
+
+    <div class="section-title reveal">
+
+        <div class="small">HOW IT WORKS</div>
+
+        <h2>From Learning to Remembering</h2>
+
+        <p>
+            The quiz fits naturally into the wider
+            BharatVerse journey.
+        </p>
+
+    </div>
+
+    <div class="steps">
+
+        <div class="step reveal">
+            <div class="number">1</div>
+            <h3>Explore</h3>
+            <p>
+                Discover a monument, story, historical topic
+                or cultural idea.
+            </p>
+        </div>
+
+        <div class="step reveal">
+            <div class="number">2</div>
+            <h3>Learn</h3>
+            <p>
+                Use guided content to understand the context
+                behind what you discovered.
+            </p>
+        </div>
+
+        <div class="step reveal">
+            <div class="number">3</div>
+            <h3>Challenge</h3>
+            <p>
+                Answer questions that turn your new knowledge
+                into an active challenge.
+            </p>
+        </div>
+
+        <div class="step reveal">
+            <div class="number">4</div>
+            <h3>Remember</h3>
+            <p>
+                Review your result and use the experience
+                to strengthen your memory.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WHY QUIZZES -->
+
+<section>
+
+    <div class="section-title reveal">
+
+        <div class="small">WHY QUIZZES?</div>
+
+        <h2>Make Heritage Learning Interactive</h2>
+
+        <p>
+            A quiz can turn a simple fact into a moment
+            of curiosity and participation.
+        </p>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature reveal">
+            <div class="feature-icon">🧠</div>
+            <h3>Active Recall</h3>
+            <p>
+                Questions encourage learners to bring information
+                back from memory instead of only reading it.
+            </p>
+        </div>
+
+        <div class="feature reveal">
+            <div class="feature-icon">🏆</div>
+            <h3>Challenge & Progress</h3>
+            <p>
+                A score gives learners a simple way to see
+                how they performed in a round.
+            </p>
+        </div>
+
+        <div class="feature reveal">
+            <div class="feature-icon">🔎</div>
+            <h3>Discover More</h3>
+            <p>
+                An unexpected question can encourage learners
+                to explore the story behind an answer.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="quote">
+        “The best heritage experience is one that makes you
+        curious enough to keep exploring.”
+    </div>
+
+</section>
+
+
+<!-- TIPS — LIGHT CONTRAST -->
+
+<section class="tips" id="tips">
+
+    <div class="section-title reveal">
+
+        <div class="small">QUIZ TIPS</div>
+
+        <h2>How to Get the Most From a Round</h2>
+
+        <p>
+            Use the quiz as part of your learning journey
+            rather than treating it only as a score.
+        </p>
+
+    </div>
+
+    <div class="tip-grid">
+
+        <div class="tip reveal">
+            <h3>Read Carefully</h3>
+            <p>
+                Look for the exact place, period, person or idea
+                being asked about before choosing an answer.
+            </p>
+        </div>
+
+        <div class="tip reveal">
+            <h3>Think First</h3>
+            <p>
+                Pause for a moment and connect the question
+                with what you remember from the learning content.
+            </p>
+        </div>
+
+        <div class="tip reveal">
+            <h3>Learn From Mistakes</h3>
+            <p>
+                A wrong answer is useful when it helps you notice
+                what you should explore next.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SCORE -->
+
+<section class="score-section" id="scoreSection">
+
+    <div class="score-box">
+
+        <div class="small">QUIZ COMPLETE</div>
+
+        <h2>Your Heritage Quiz Result</h2>
+
+        <div class="big" id="scoreText">
+            0/10
+        </div>
+
+        <p id="scoreMessage">
+            Keep exploring India's heritage!
+        </p>
+
+        <button
+            class="primary-button restart"
+            onclick="restartQuiz()">
+            Play Again →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- BHARATVERSE JOURNEY -->
+
+<section>
+
+    <div class="section-title reveal">
+
+        <div class="small">PART OF BHARATVERSE</div>
+
+        <h2>One Experience, Many Ways to Learn</h2>
+
+        <p>
+            The quiz connects with the larger BharatVerse idea
+            of discovering, exploring, experiencing and remembering heritage.
+        </p>
+
+    </div>
+
+    <div class="milestones">
+
+        <div class="milestone reveal">
+            <strong>01</strong>
+            <h3>Discover</h3>
+            <p>
+                Start with a monument, location or historical
+                topic that sparks curiosity.
+            </p>
+        </div>
+
+        <div class="milestone reveal">
+            <strong>02</strong>
+            <h3>Experience</h3>
+            <p>
+                Explore stories, guided content and immersive
+                views of heritage.
+            </p>
+        </div>
+
+        <div class="milestone reveal">
+            <strong>03</strong>
+            <h3>Remember</h3>
+            <p>
+                Use quizzes and interactive challenges
+                to reinforce what you learned.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INFORMATION -->
+
+<section>
+
+    <div class="info-grid">
+
+        <div class="info-card reveal">
+            <h3>For Students</h3>
+            <p>
+                Short questions and visible progress can make
+                heritage revision feel more engaging and interactive.
+            </p>
+        </div>
+
+        <div class="info-card reveal">
+            <h3>For Heritage Enthusiasts</h3>
+            <p>
+                The categories provide a simple starting point
+                for exploring monuments, history, dynasties and culture.
+            </p>
+        </div>
+
+        <div class="info-card reveal">
+            <h3>For Educators</h3>
+            <p>
+                The quiz concept can support classroom activities,
+                revision rounds and discussions around heritage topics.
+            </p>
+        </div>
+
+        <div class="info-card reveal">
+            <h3>For Future Expansion</h3>
+            <p>
+                The experience can grow with more question sets,
+                themed rounds, challenges and richer learning content.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <div class="cta-box reveal">
+
+        <h2>
+            Ready to Test Your Heritage Knowledge?
+        </h2>
+
+        <p>
+            Enter the arena, challenge yourself and keep
+            discovering the stories of India.
+        </p>
+
+        <a href="#arena" class="primary-button">
+            Start the Quiz →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div>
+
+            <h2>BharatVerse 🇮🇳</h2>
+
+            <p>
+                India's past, reimagined for the next generation.
+                Making heritage immersive, interactive and exciting.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <div>
+
+                <h4>Explore</h4>
+
+                <a href="#arena">Quiz Arena</a>
+                <a href="#categories">Categories</a>
+                <a href="#how">How It Works</a>
+
+            </div>
+
+            <div>
+
+                <h4>Navigate</h4>
+
+                <a href="Hack-a-thon website.html">
+                    Main Website
+                </a>
+
+                <a href="#home">
+                    Back to Top
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 BharatVerse • Hackathon 2026 • Indian Knowledge Systems & Cultural Innovation
+    </div>
+
+</footer>
+
+
+<script>
+
+const questions=[
+
+{
+q:"Which monument is famously known as a symbol of love and stands in Agra?",
+o:["Taj Mahal","Red Fort","Konark Sun Temple","Gateway of India"],
+a:0
+},
+
+{
+q:"The Red Fort is located in which city?",
+o:["Jaipur","Delhi","Agra","Lucknow"],
+a:1
+},
+
+{
+q:"Which monument is designed around the idea of a giant stone chariot?",
+o:["Sanchi Stupa","Konark Sun Temple","Qutub Minar","Charminar"],
+a:1
+},
+
+{
+q:"Which category best describes the study of rulers and kingdoms across historical periods?",
+o:["Dynasties","Weather","Astronomy","Geography"],
+a:0
+},
+
+{
+q:"What is one purpose of a heritage quiz in BharatVerse?",
+o:[
+    "To replace all learning content",
+    "To reinforce what learners discover",
+    "To remove historical context",
+    "To focus only on scores"
+],
+a:1
+},
+
+{
+q:"Which of these is a type of heritage learning experience described on the BharatVerse website?",
+o:[
+    "Interactive 3D views",
+    "Only printed worksheets",
+    "Only audio calls",
+    "Only advertisements"
+],
+a:0
+},
+
+{
+q:"Which topic is included among the Heritage Quiz Arena categories?",
+o:[
+    "Monuments",
+    "Cooking prices",
+    "Traffic rules",
+    "Weather forecasts"
+],
+a:0
+},
+
+{
+q:"In the BharatVerse journey, which stage focuses on completing quizzes and interactive challenges?",
+o:[
+    "Discover",
+    "Explore",
+    "Experience",
+    "Remember"
+],
+a:3
+},
+
+{
+q:"What can a quiz help a learner do after exploring heritage content?",
+o:[
+    "Test memory",
+    "Erase information",
+    "Avoid exploration",
+    "Skip all context"
+],
+a:0
+},
+
+{
+q:"What is the main idea of the Heritage Quiz Arena?",
+o:[
+    "Turn learning into a challenge",
+    "Replace monuments with games only",
+    "Teach without any context",
+    "Limit heritage to one city"
+],
+a:0
+}
+
+];
+
+
+let current=0;
+
+let answers=Array(questions.length).fill(null);
+
+let submitted=false;
+
+
+function renderQuestion(){
+
+    const q=questions[current];
+
+    document.getElementById('questionCount').innerText=
+        'Question '+(current+1)+' of '+questions.length;
+
+    document.getElementById('progress').style.width=
+        ((current+1)/questions.length*100)+'%';
+
+    document.getElementById('question').innerText=q.q;
+
+    const box=document.getElementById('options');
+
+    box.innerHTML='';
+
+    q.o.forEach((opt,i)=>{
+
+        const b=document.createElement('button');
+
+        b.className=
+            'option'+
+            (answers[current]===i?' selected':'');
+
+        b.innerText=
+            String.fromCharCode(65+i)+'. '+opt;
+
+        b.onclick=()=>chooseAnswer(i);
+
+        box.appendChild(b);
+
+    });
+
+    document.getElementById('feedback').style.display='none';
+
+    document.getElementById('prevBtn').disabled=
+        current===0;
+
+    document.getElementById('nextBtn').innerText=
+        current===questions.length-1
+        ?'Finish Quiz'
+        :'Next →';
+
+}
+
+
+function chooseAnswer(i){
+
+    answers[current]=i;
+
+    document
+        .querySelectorAll('.option')
+        .forEach((b,n)=>
+            b.classList.toggle(
+                'selected',
+                n===i
+            )
+        );
+
+}
+
+
+function previousQuestion(){
+
+    if(current>0){
+
+        current--;
+
+        renderQuestion();
+
+    }
+
+}
+
+
+function nextQuestion(){
+
+    if(answers[current]===null){
+
+        const f=document.getElementById('feedback');
+
+        f.className='feedback wrong';
+
+        f.innerText=
+            'Please select an answer before continuing.';
+
+        f.style.display='block';
+
+        return;
+
+    }
+
+    if(current<questions.length-1){
+
+        current++;
+
+        renderQuestion();
+
+    }else{
+
+        finishQuiz();
+
+    }
+
+}
+
+
+function finishQuiz(){
+
+    let score=0;
+
+    answers.forEach((x,i)=>{
+
+        if(x===questions[i].a)
+            score++;
+
+    });
+
+    document.getElementById('scoreText').innerText=
+        score+'/'+questions.length;
+
+    let msg=
+        "Keep exploring India's heritage and try another round!";
+
+    if(score===questions.length){
+
+        msg=
+            'Outstanding! You completed the round with a perfect score.';
+
+    }else if(score>=8){
+
+        msg=
+            "Excellent work! Your heritage knowledge is strong.";
+
+    }else if(score>=5){
+
+        msg=
+            "Good effort! Explore more stories and try again.";
+
+    }
+
+    document.getElementById('scoreMessage').innerText=msg;
+
+    document.getElementById('scoreSection').style.display='block';
+
+    document
+        .getElementById('scoreSection')
+        .scrollIntoView({
+            behavior:'smooth',
+            block:'center'
+        });
+
+    submitted=true;
+
+}
+
+
+function restartQuiz(){
+
+    current=0;
+
+    answers=Array(questions.length).fill(null);
+
+    submitted=false;
+
+    document.getElementById('scoreSection').style.display='none';
+
+    renderQuestion();
+
+    document
+        .getElementById('arena')
+        .scrollIntoView({
+            behavior:'smooth'
+        });
+
+}
+
+
+/* SCROLL REVEAL */
+
+const revealElements=
+    document.querySelectorAll('.reveal');
+
+const observer=
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add('show');
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+revealElements.forEach(e=>
+    observer.observe(e)
+);
+
+
+renderQuestion();
+
+</script>
+
+</body>
+</html>
